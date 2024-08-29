@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhavagne Dunn - Software Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header>
+            <img :src="profilePhoto" alt="Jhavagne Dunn" class="profile-photo">
+            <h1>{{ name }}</h1>
+            <p>{{ title }}</p>
+            <nav>
+                <ul>
+                    <li v-for="link in navLinks" :key="link.id">
+                        <a :href="link.href">{{ link.text }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- About -->
+        <section id="about">
+            <h2>🚀 About Me</h2>
+            <p>{{ aboutText }}</p>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>🛠 Technical Skills</h2>
+            <ul>
+                <li v-for="skill in skills" :key="skill">{{ skill }}</li>
+            </ul>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div v-for="job in experiences" :key="job.company">
+                <h3>{{ job.title }} at {{ job.company }}</h3>
+                <p>{{ job.date }}</p>
+                <p>{{ job.description }}</p>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2>Education</h2>
+            <ul>
+                <li v-for="edu in education" :key="edu.degree">
+                    {{ edu.degree }}, {{ edu.institution }}, {{ edu.date }}
+                </li>
+            </ul>
+        </section>
+
+        <!-- Learning -->
+        <section id="learning">
+            <h2>🌱 Currently Learning</h2>
+            <p>{{ learningText }}</p>
+        </section>
+
+        <!-- Achievements -->
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <ul>
+                <li>Thesis Publication: <a href="https://cdn.aaai.org/ocs/18453/18453-79393-1-PB.pdf" target="_blank" rel="noopener noreferrer">"Automatic Identification of Guitar Types from Prerecorded Audio"</a>, FLAIRS 2020.</li>
+            </ul>
+        </section>
+            
+        </section>
+        <!-- Contact -->
+        <section id="contact">
+            <h2>📫 How to Reach Me</h2>
+            <p>Email: <a :href="'mailto:' + contact.email">{{ contact.email }}</a></p>
+            <p>LinkedIn: <a :href="contact.linkedin" target="_blank">{{ contact.linkedinText }}</a></p>
+            <p>GitHub: <a :href="contact.github" target="_blank">{{ contact.githubText }}</a></p>
+            <form @submit.prevent="submitForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" v-model="form.name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" v-model="form.email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" v-model="form.message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Jhavagne Dunn. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
